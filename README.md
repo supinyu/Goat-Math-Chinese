@@ -18,6 +18,11 @@
 
 在Goat的论文中，对比了不同模型的tokenizer，ChatGLM和LLaMA一样，对数字的每一位进行单独切分，避免了数字不一致的问题
 
+**论文原理介绍**
+
+[构建中文小学数学垂类大模型-原理介绍](https://zhuanlan.zhihu.com/p/637999512)
+
+
 ## 数据集
 
 - [goat-chinese](https://huggingface.co/datasets/supinyu/goat-chinese)
@@ -25,6 +30,6 @@
 
 Goat论文，开源了英文的Goat数据集，主要包括加减乘除的相关数据，我将其转成成了中文的算术数据集，放到了huggingface上面
 
-Belle也开源了一个数学的数据集，我们也拿来一起训练一下，是模型也能够解答简单的数学问题
+Belle也开源了一个数学的数据集，我们也拿来一起训练一下，让模型也能够解答简单的数学问题
 
 

@@ -3,7 +3,7 @@
 # @Author  : supinyu
 # @File    : train_lora.py.py
 
-import logging
+from loguru import logger
 import os
 import sys
 
@@ -15,9 +15,6 @@ from transformers import HfArgumentParser, set_seed, AutoConfig, AutoTokenizer, 
 
 
 from arguments import ModelArguments, DataTrainingArguments, FineTuneArguments
-
-logger = logging.getLogger(__name__)
-log_name = __name__
 
 
 class ModifiedTrainer(Trainer):
@@ -43,12 +40,6 @@ def main():
     parser = HfArgumentParser((ModelArguments, DataTrainingArguments, FineTuneArguments))
     model_args, data_args, training_args = parser.parse_args_into_dataclasses()
     # Setup logging
-    logging.basicConfig(
-        format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
-        datefmt="%m/%d/%Y %H:%M:%S",
-        handlers=[logging.StreamHandler(sys.stdout),
-                  logging.FileHandler(log_name, 'w+', encoding='utf-8'), ],
-    )
 
     if not os.path.exists(training_args.output_dir):
         os.makedirs(training_args.output_dir)
@@ -60,13 +51,14 @@ def main():
     set_seed(training_args.seed)
 
     model_name = model_args.model_name_or_path.split("/")[-1]
+    logger.info("train model name is {}".format(model_name))
 
     # Load dataset
     data_files = {}
     data_files["train"] = data_args.train_file
     extension = data_args.train_file.split(".")[-1]
-    data_files["test"] = data_args.test_file
-    extension = data_args.train_file.split(".")[-1]
+    if data_args.test_file is not None:
+        data_files["test"] = data_args.test_file
 
     raw_datasets = load_dataset(
         extension,
@@ -191,10 +183,10 @@ def main():
         "chatglm-6b"  : preprocess_function_train_v1
     }
     def print_dataset_example(example):
-        print("input_ids", example["input_ids"])
-        print("inputs", tokenizer.decode(example["input_ids"]))
-        print("label_ids", example["labels"])
-        print("labels", tokenizer.decode(example["labels"]))
+        logger.info("input_ids", example["input_ids"])
+        logger.info("inputs", tokenizer.decode(example["input_ids"]))
+        logger.info("label_ids", example["labels"])
+        logger.info("labels", tokenizer.decode(example["labels"]))
 
     if "train" not in raw_datasets:
         raise ValueError("--do_train requires a train dataset")

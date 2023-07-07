@@ -33,6 +33,7 @@ class ModifiedTrainer(Trainer):
         save_tunable_parameters(
             self.model, os.path.join(output_dir, "chatglm-lora.pt")
         )
+        self.model.save_pretrained(output_dir)
 
 
 def main():

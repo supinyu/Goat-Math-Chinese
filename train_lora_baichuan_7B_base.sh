@@ -1,7 +1,7 @@
 MODEL_PATH=/disk/model_checkpoint/baichuan-7B
 
 deepspeed --include="localhost:1,3" train_lora.py \
-  --train_file /disk/nlp_info/LLM_dataset/school_math_0.25M_goat_train.json \
+  --train_file /disk/nlp_info/LLM_dataset/school_math_0.5M_goat_train.json \
   --model_name_or_path $MODEL_PATH \
   --output_dir lora_goat_output \
   --prompt_column instruction \

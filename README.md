@@ -11,12 +11,13 @@
 **中文基座模型**
 
 - [baichuan-7B](https://github.com/baichuan-inc/baichuan-7B)
+- [baichuan-13B-chat](https://huggingface.co/baichuan-inc/Baichuan-13B-Chat)
 - [ChatGLM-6B](https://github.com/THUDM/ChatGLM-6B)
 - [ChatGLM2-6B](https://github.com/THUDM/ChatGLM2-6B)
 
 由于LLaMA不支持中文，所以我们选择一个支持中文的LLaMA模型，最近百川智能开源了baichuan-7B的模型，这个模型和LLaMA是一样的模型设计
 
-在Goat的论文中，对比了不同模型的tokenizer，ChatGLM和LLaMA一样，对数字的每一位进行单独切分，避免了数字不一致的问题
+在Goat的论文中，对比了不同模型的tokenizer，ChatGLM-6B和LLaMA一样，对数字的每一位进行单独切分，避免了数字不一致的问题，所以我们也来测试一下ChatGLM-6B
 
 **论文原理介绍**
 
@@ -33,3 +34,4 @@ Goat论文，开源了英文的Goat数据集，主要包括加减乘除的相关
 Belle也开源了一个数学的数据集，我们也拿来一起训练一下，让模型也能够解答简单的数学问题
 
 
+## 

@@ -23,6 +23,8 @@
 
 [构建中文小学数学垂类大模型-原理介绍](https://zhuanlan.zhihu.com/p/637999512)
 
+[构建中文小学数学垂类大模型-ChatGLM实战](https://zhuanlan.zhihu.com/p/643492290)
+
 
 ## 数据集
 

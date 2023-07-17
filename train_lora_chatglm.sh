@@ -3,7 +3,7 @@ MODEL_PATH=/disk/nlp_info/LLM_model/ChatGLM-6B
 deepspeed --include="localhost:1,3" train_lora.py \
   --train_file /disk/nlp_info/LLM_dataset/school_math_0.5M_goat_train.json \
   --model_name_or_path $MODEL_PATH \
-  --output_dir lora_goat_output \
+  --output_dir chatglm-6b-lora-output \
   --prompt_column instruction \
   --response_column output \
   --cache_dir goat_cache \
